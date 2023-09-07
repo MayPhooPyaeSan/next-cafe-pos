@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@500;700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2ead3;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  line-height: 2;
+  letter-spacing: 2px;
+  font-size: 30px;
+  color: #f2ead3;
+}
+
+.navbar {
+  background-color: #3f2305;
+}
