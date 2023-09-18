@@ -17,9 +17,6 @@ export const tablesSlice = createSlice({
   name: "locations",
   initialState,
   reducers: {
-    setIsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
     setTables: (state, action) => {
       state.items = action.payload;
     },
@@ -37,12 +34,7 @@ export const tablesSlice = createSlice({
   },
 });
 
-export const {
-  setIsLoading,
-  addTables,
-  removeTables,
-  updateTables,
-  setTables,
-} = tablesSlice.actions;
+export const { addTables, removeTables, updateTables, setTables } =
+  tablesSlice.actions;
 
 export default tablesSlice.reducer;

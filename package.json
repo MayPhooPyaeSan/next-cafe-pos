@@ -23,6 +23,8 @@
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "aws-sdk": "^2.1379.0",
+    "b2": "^0.1.11",
+    "backblaze-b2": "^1.7.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "formidable-serverless": "^1.1.1",
@@ -36,9 +38,15 @@
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-redux": "^8.1.1",
-    "typescript": "5.0.4"
+    "react-router-dom": "^6.16.0",
+    "react-scroll": "^1.8.9",
+    "typescript": "5.0.4",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/qrcode": "^1.5.0"
+    "@types/backblaze-b2": "^1.5.2",
+    "@types/qrcode": "^1.5.0",
+    "@types/react-scroll": "^1.8.7",
+    "@types/uuid": "^9.0.3"
   }
 }

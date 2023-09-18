@@ -1,7 +1,7 @@
 import { Box, Slide, Typography } from "@mui/material";
 import Image from "next/image";
-// import PandaCooking from "../assets/panda-cooking.png";
-// import headerImg from "../assets/wave.svg";
+import PandaCooking from "../assets/panda-cooking.png";
+import headerImg from "../assets/wave.svg";
 
 const Header = () => {
   return (
@@ -17,7 +17,7 @@ const Header = () => {
         zIndex: 5,
       }}
     >
-      {/* <Image
+      <Image
         src={headerImg}
         style={{
           width: "100%",
@@ -26,7 +26,7 @@ const Header = () => {
           objectFit: "cover",
         }}
         alt="header-image"
-      /> */}
+      />
       <Slide
         direction="left"
         in={true}
@@ -42,7 +42,7 @@ const Header = () => {
             display: { xs: "none", md: "block" },
           }}
         >
-          {/* <Image src={PandaCooking} alt="header-image" /> */}
+          <Image src={PandaCooking} alt="header-image" />
         </Box>
       </Slide>
       <Typography
@@ -54,7 +54,7 @@ const Header = () => {
           mt: 4,
         }}
       >
-        Cafe POS
+        Foodie POS
       </Typography>
     </Box>
   );

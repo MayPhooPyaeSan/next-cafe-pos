@@ -17,9 +17,6 @@ export const menusSlice = createSlice({
   name: "menus",
   initialState,
   reducers: {
-    setIsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
     setMenus: (state, action) => {
       state.items = action.payload;
     },
@@ -37,7 +34,6 @@ export const menusSlice = createSlice({
   },
 });
 
-export const { setMenus, addMenu, removeMenu, updateMenu, setIsLoading } =
-  menusSlice.actions;
+export const { setMenus, addMenu, removeMenu, updateMenu } = menusSlice.actions;
 
 export default menusSlice.reducer;

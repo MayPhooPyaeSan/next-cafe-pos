@@ -87,6 +87,8 @@ const NewMenu = ({ open, setOpen }: Props) => {
         body: JSON.stringify(menu),
       });
       const menuCreated = await response.json();
+      console.log("menuCreated", menuCreated);
+
       dispatch(addMenu(menuCreated));
       dispatch(fetchMenusMenuCategoriesLocations(selectedLocationId));
       setIsLoading(false);
@@ -96,7 +98,6 @@ const NewMenu = ({ open, setOpen }: Props) => {
       setIsLoading(false);
     }
   };
-
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <DialogTitle fontSize={30} align="center">

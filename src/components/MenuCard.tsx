@@ -19,9 +19,9 @@ const MenuCard = ({ menu, href }: Props) => {
         marginBottom: "20px",
       }}
     >
-      <Card sx={{ width: 200, height: 220, pb: 2 }}>
+      <Card sx={{ width: 200, height: 260, pb: 2 }}>
         <CardMedia
-          sx={{ height: 140, backgroundSize: "contain" }}
+          sx={{ height: 170, backgroundSize: "cover", width: "100%" }}
           image={menu.assetUrl || ""}
           component={"div"}
         />
@@ -40,13 +40,13 @@ const MenuCard = ({ menu, href }: Props) => {
               alignItems: "center",
             }}
           >
-            <PaidIcon color="success" />
+            {/* <PaidIcon color="success" /> */}
             <Typography
               gutterBottom
               variant="subtitle1"
               sx={{ mt: 0.8, ml: 0.8 }}
             >
-              {menu.price}
+              🛒 {menu.price} KS
             </Typography>
           </Box>
         </CardContent>

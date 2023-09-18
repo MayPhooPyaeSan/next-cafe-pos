@@ -21,6 +21,8 @@ export const fetchLocations = createAsyncThunk(
     const response = await fetch(
       `${config.apiBaseUrl}/locations?companyId=${companyId}`
     );
+    console.log("locationResponse", response);
+
     const locations = await response.json();
     thunkAPI.dispatch(setIsLoading(false));
     thunkAPI.dispatch(setLocations(locations));

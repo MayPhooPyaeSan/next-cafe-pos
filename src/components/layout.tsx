@@ -1,21 +1,58 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import logo from "../assets/logo.png";
+import { useAppDispatch } from "@/store/hook";
+import { useEffect } from "react";
+import { fetchAppData } from "@/store/slices/appSlice";
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+import Link from "next/link";
 
-const pages = ["Orders", "Menus", "Menu Categories", "tables"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const sidebarMenuItems = [
+  {
+    id: 1,
+    label: "Orders",
+    route: "/backoffice/orders",
+  },
+  {
+    id: 2,
+    label: "Menus",
+    route: "/backoffice/menus",
+  },
+  {
+    id: 3,
+    label: "Menu Categories",
+    route: "/backoffice/menuCategories",
+  },
+  {
+    id: 4,
+    label: "Tables",
+    route: "/backoffice/tables",
+  },
+  {
+    id: 5,
+    label: "Locations",
+    route: "/backoffice/locations",
+  },
+  {
+    id: 6,
+    label: "Settings",
+    route: "/backoffice/settings",
+  },
+];
 
 interface Props {
   children: React.ReactNode;
@@ -25,6 +62,13 @@ const Layout = ({ children }: Props) => {
   const { data } = useSession();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [mobileMenuAnchorEl, setMobileMenuAnchorEl] =
+    React.useState<null | HTMLElement>(null);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchAppData({ locationId: undefined }));
+  }, []);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -33,141 +77,157 @@ const Layout = ({ children }: Props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  //////////////
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+  const handleOpenMobileMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMenuAnchorEl(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const handleCloseMobileMenu = () => {
+    setMobileMenuAnchorEl(null);
   };
 
   return (
     <AppBar position="static" sx={{ background: "#3f2305" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
           <Box
             sx={{
-              width: "80px",
               display: "flex",
-              position: "relative",
-              mt: 2,
               alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
             }}
           >
-            <Image
-              alt="logo"
-              src={logo}
-              style={{ width: "100%", height: "100%" }}
-            />
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              justifyContent: "flex-end",
-              display: { xs: "none", md: "flex", padding: "5px 30px" },
-            }}
-          >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "#F2EAD3", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            {auth && (
-              <div>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>Logout</MenuItem>
-                  <MenuItem onClick={handleClose}>Login</MenuItem>
-                  <MenuItem onClick={handleClose}>Locations</MenuItem>
-                  <MenuItem onClick={handleClose}>Settings</MenuItem>
-                </Menu>
-              </div>
-            )}
-          </Box>
-          {data && (
-            <Button
-              color="inherit"
-              sx={{ background: "black" }}
-              onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Image
+                alt="logo"
+                src={logo}
+                style={{ width: "80px", height: "80px", marginRight: "16px" }}
+              />
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+              }}
             >
-              Sign out
-            </Button>
-          )}
+              <List sx={{ p: 0, display: "flex" }}>
+                {sidebarMenuItems.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={item.route}
+                    passHref
+                    style={{ textDecoration: "none" }}
+                  >
+                    <ListItem
+                      disablePadding
+                      sx={{
+                        "&:hover": {
+                          backgroundColor: "black",
+                          borderRadius: "10px",
+                        },
+                      }}
+                    >
+                      <ListItemButton>
+                        <ListItemText
+                          primary={item.label}
+                          sx={{
+                            color: "#E8F6EF",
+                            textDecoration: "none",
+                          }}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  </Link>
+                ))}
+              </List>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {data && (
+                <Button
+                  color="inherit"
+                  sx={{
+                    background: "#040303",
+                    marginRight: "10px",
+                    borderRadius: "10px",
+                    p: "10px",
+                    "&:hover": {
+                      backgroundColor: "#161616",
+                    },
+                  }}
+                  onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+                >
+                  Sign out
+                </Button>
+              )}
+              <IconButton
+                size="large"
+                aria-label="menu"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenMobileMenu}
+                color="inherit"
+                sx={{
+                  display: { xs: "flex", md: "none" },
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+          </Box>
+          <Menu
+            id="menu-appbar"
+            anchorEl={mobileMenuAnchorEl}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(mobileMenuAnchorEl)}
+            onClose={handleCloseMobileMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            <List sx={{ p: 0 }}>
+              {sidebarMenuItems.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.route}
+                  passHref
+                  style={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemText
+                        className="app-bar-link"
+                        sx={{
+                          color: "black",
+                          textDecoration: "none",
+                        }}
+                        primary={item.label}
+                      />
+                    </ListItemButton>
+                  </ListItem>
+                </Link>
+              ))}
+            </List>
+          </Menu>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
+
 export default Layout;

@@ -40,9 +40,8 @@ export const getLocationsByMenuCategoryId = (
     .map((item) => item.locationId);
   return locations.filter((item) => validLocationIds.includes(item.id));
 };
-
 export const getQrCodeUrl = (locationId: number, tableId: number) => {
-  return `https://msquarefdc.sgp1.cdn.digitaloceanspaces.com/foodie-pos/qrcode/summer/locationId-${locationId}-tableId-${tableId}.png`;
+  return `https://s3.us-east-005.backblazeb2.com/nextcafepos/mppps/qrcode/locationId-${locationId}-tableId-${tableId}.png`;
 };
 
 export const getNumberOfMenusByOrderId = (
@@ -59,11 +58,10 @@ export const getNumberOfMenusByOrderId = (
 };
 
 export const getCartTotalPrice = (cart: CartItem[]) => {
-  const totalPrice = cart.reduce((prev, curr) => {
-    const menuPrice = curr.menu.price;
-
-    prev += menuPrice * curr.quantity;
-    return prev;
+  const totalPrice = cart.reduce((total, item) => {
+    const menuPrice = item.menu.price;
+    total += menuPrice * item.quantity;
+    return total;
   }, 0);
   return totalPrice;
 };

@@ -12,7 +12,7 @@ const BackofficeApp = () => {
     if (!data && status !== "loading") {
       router.push("auth/signin");
     }
-  }, [data]);
+  }, [data, router]);
 
   return (
     <Layout>

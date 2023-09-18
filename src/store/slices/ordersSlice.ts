@@ -17,9 +17,6 @@ export const ordersSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    setIsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
     setOrders: (state, action: PayloadAction<Order[]>) => {
       state.items = action.payload;
     },
@@ -29,6 +26,6 @@ export const ordersSlice = createSlice({
   },
 });
 
-export const { setIsLoading, setOrders, addOrder } = ordersSlice.actions;
+export const { setOrders, addOrder } = ordersSlice.actions;
 
 export default ordersSlice.reducer;

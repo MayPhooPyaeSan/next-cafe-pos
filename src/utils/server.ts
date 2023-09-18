@@ -1,12 +1,12 @@
 import { config } from "@/config";
 import { PrismaClient } from "@prisma/client";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { S3Client } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import multer from "multer";
 import multerS3 from "multer-s3";
 import QRCode from "qrcode";
 
 export const prisma = new PrismaClient();
+// use `prisma` in your application to read and write data in your DB
 
 export const generateLinkForQRCode = (locationId: number, tableId: number) => {
   return `${config.orderAppUrl}?locationId=${locationId}&tableId=${tableId}`;
@@ -36,6 +36,7 @@ export const qrCodeImageUpload = async (
   }
 };
 
+// Set S3 endpoint to DigitalOcean Spaces
 const s3Client = new S3Client({
   endpoint: config.spaceEndpoint,
   region: "sgp1",

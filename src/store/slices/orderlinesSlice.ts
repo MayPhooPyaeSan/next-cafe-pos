@@ -35,9 +35,6 @@ export const orderlinesSlice = createSlice({
   name: "orderlines",
   initialState,
   reducers: {
-    setIsLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
     setOrderlines: (state, action) => {
       state.items = action.payload;
     },
@@ -55,7 +52,6 @@ export const orderlinesSlice = createSlice({
   },
 });
 
-export const { setOrderlines, updateOrderline, setIsLoading } =
-  orderlinesSlice.actions;
+export const { setOrderlines, updateOrderline } = orderlinesSlice.actions;
 
 export default orderlinesSlice.reducer;
