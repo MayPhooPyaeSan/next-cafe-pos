@@ -1,4 +1,5 @@
 import FileDropZone from "@/components/FileDropZone";
+import Layout from "@/components/Layout";
 import { config } from "@/config";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { appData } from "@/store/slices/appSlice";

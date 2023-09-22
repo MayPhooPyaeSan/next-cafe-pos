@@ -32,6 +32,7 @@
     "multer-s3": "^3.0.1",
     "next": "13.4.2",
     "next-auth": "^4.22.1",
+    "nprogress": "^0.2.0",
     "prisma": "^4.14.0",
     "qrcode": "^1.5.3",
     "react": "18.2.0",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/backblaze-b2": "^1.5.2",
+    "@types/nprogress": "^0.2.0",
     "@types/qrcode": "^1.5.0",
     "@types/react-scroll": "^1.8.7",
     "@types/uuid": "^9.0.3"

@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";

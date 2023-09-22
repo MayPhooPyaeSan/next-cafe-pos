@@ -1,5 +1,5 @@
 import Loading from "@/components/Loading";
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { appData } from "@/store/slices/appSlice";
 import { updateOrderlineStatus } from "@/store/slices/orderlinesSlice";
