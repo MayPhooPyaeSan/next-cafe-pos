@@ -243,9 +243,7 @@ export default async function handler(
       res.send({
         menus,
         menuCategories,
-
         locations,
-
         menusMenuCategoriesLocations,
         company,
         tables,

@@ -87,146 +87,150 @@ const Layout = ({ children }: Props) => {
   };
 
   return (
-    <AppBar position="static" sx={{ background: "#3f2305" }}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Image
-                alt="logo"
-                src={logo}
-                style={{ width: "80px", height: "80px", marginRight: "16px" }}
-              />
-            </Box>
+    <Box>
+      <AppBar position="static" sx={{ background: "#3f2305" }}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
             <Box
               sx={{
-                display: { xs: "none", md: "flex" },
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
               }}
             >
-              <List sx={{ p: 0, display: "flex" }}>
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <Image
+                  alt="logo"
+                  src={logo}
+                  style={{ width: "80px", height: "80px", marginRight: "16px" }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  alignItems: "center",
+                }}
+              >
+                <List sx={{ p: 0, display: "flex" }}>
+                  {sidebarMenuItems.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.route}
+                      passHref
+                      style={{ textDecoration: "none" }}
+                    >
+                      <ListItem
+                        disablePadding
+                        sx={{
+                          "&:hover": {
+                            backgroundColor: "black",
+                            borderRadius: "10px",
+                          },
+                        }}
+                      >
+                        <ListItemButton>
+                          <ListItemText
+                            primary={item.label}
+                            sx={{
+                              color: "#E8F6EF",
+                              textDecoration: "none",
+                            }}
+                          />
+                        </ListItemButton>
+                      </ListItem>
+                    </Link>
+                  ))}
+                </List>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {data && (
+                  <Button
+                    color="inherit"
+                    sx={{
+                      background: "#040303",
+                      marginRight: "10px",
+                      borderRadius: "10px",
+                      p: "10px",
+                      "&:hover": {
+                        backgroundColor: "#161616",
+                      },
+                    }}
+                    onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+                  >
+                    Sign out
+                  </Button>
+                )}
+                <IconButton
+                  size="large"
+                  aria-label="menu"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenMobileMenu}
+                  color="inherit"
+                  sx={{
+                    display: { xs: "flex", md: "none" },
+                  }}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Box>
+            </Box>
+            <Menu
+              id="menu-appbar"
+              anchorEl={mobileMenuAnchorEl}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(mobileMenuAnchorEl)}
+              onClose={handleCloseMobileMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              <List sx={{ p: 0 }}>
                 {sidebarMenuItems.map((item) => (
                   <Link
                     key={item.id}
                     href={item.route}
                     passHref
-                    style={{ textDecoration: "none" }}
+                    style={{
+                      textDecoration: "none",
+                    }}
                   >
-                    <ListItem
-                      disablePadding
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "black",
-                          borderRadius: "10px",
-                        },
-                      }}
-                    >
+                    <ListItem disablePadding>
                       <ListItemButton>
                         <ListItemText
-                          primary={item.label}
+                          className="app-bar-link"
                           sx={{
-                            color: "#E8F6EF",
+                            color: "black",
                             textDecoration: "none",
                           }}
+                          primary={item.label}
                         />
                       </ListItemButton>
                     </ListItem>
                   </Link>
                 ))}
               </List>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              {data && (
-                <Button
-                  color="inherit"
-                  sx={{
-                    background: "#040303",
-                    marginRight: "10px",
-                    borderRadius: "10px",
-                    p: "10px",
-                    "&:hover": {
-                      backgroundColor: "#161616",
-                    },
-                  }}
-                  onClick={() => signOut({ callbackUrl: "/auth/signin" })}
-                >
-                  Sign out
-                </Button>
-              )}
-              <IconButton
-                size="large"
-                aria-label="menu"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenMobileMenu}
-                color="inherit"
-                sx={{
-                  display: { xs: "flex", md: "none" },
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Box>
-          </Box>
-          <Menu
-            id="menu-appbar"
-            anchorEl={mobileMenuAnchorEl}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
-            }}
-            open={Boolean(mobileMenuAnchorEl)}
-            onClose={handleCloseMobileMenu}
-            sx={{
-              display: { xs: "block", md: "none" },
-            }}
-          >
-            <List sx={{ p: 0 }}>
-              {sidebarMenuItems.map((item) => (
-                <Link
-                  key={item.id}
-                  href={item.route}
-                  passHref
-                  style={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <ListItem disablePadding>
-                    <ListItemButton>
-                      <ListItemText
-                        className="app-bar-link"
-                        sx={{
-                          color: "black",
-                          textDecoration: "none",
-                        }}
-                        primary={item.label}
-                      />
-                    </ListItemButton>
-                  </ListItem>
-                </Link>
-              ))}
-            </List>
-          </Menu>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </Menu>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {children}
+    </Box>
   );
 };
 

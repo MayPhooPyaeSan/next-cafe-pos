@@ -77,7 +77,8 @@ const Row = ({ order, orderlines, menus }: Props) => {
       };
     });
 
-    return orderlineMenus.map((item) => (
+    return;
+    orderlineMenus.map((item) => (
       <Box key={item.itemId} sx={{ mr: 2 }}>
         <Paper
           elevation={3}
@@ -212,8 +213,6 @@ const Orders = () => {
   const getOrderlinesByOrderId = (orderId: number) => {
     return orderlines.filter((item) => item.orderId === orderId);
   };
-
-  if (isLoading) return <Loading />;
 
   return (
     <Layout>

@@ -1,13 +1,9 @@
 import { Box, CircularProgress } from "@mui/material";
 
-interface Props {
-  color?: "primary" | "secondary" | "error" | "success";
-}
-
-const Loading = ({ color = "primary" }: Props) => {
+const Loading = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
-      <CircularProgress color={color} />
+      <CircularProgress color="primary" />
     </Box>
   );
 };
