@@ -41,7 +41,7 @@ export const getLocationsByMenuCategoryId = (
   return locations.filter((item) => validLocationIds.includes(item.id));
 };
 export const getQrCodeUrl = (locationId: number, tableId: number) => {
-  return `https://s3.us-east-005.backblazeb2.com/nextcafepos/mppps/qrcode/locationId-${locationId}-tableId-${tableId}.png`;
+  return `https://msquarefdc.sgp1.cdn.digitaloceanspaces.com/foodie-pos/qrcode/summer/locationId-${locationId}-tableId-${tableId}.png`;
 };
 
 export const getNumberOfMenusByOrderId = (

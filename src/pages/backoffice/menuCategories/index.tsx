@@ -8,6 +8,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import NewMenuCategory from "./NewMenuCategory";
+import Layout from "@/components/Layout";
 
 const MenuCategories = () => {
   const { isLoading, menuCategories, menusMenuCategoriesLocations } =
@@ -33,48 +34,50 @@ const MenuCategories = () => {
     ).length;
   };
 
-  if (isLoading) return <Loading />;
+  // if (isLoading) return <Loading />;
 
   return (
-    <Box>
+    <Layout>
       <Box>
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
-            onClick={() => setOpen(true)}
-            variant="contained"
-            startIcon={<AddIcon />}
-            sx={{
-              backgroundColor: "#4C4C6D",
-              width: "fit-content",
-              color: "#E8F6EF",
-              mb: 2,
-              ":hover": {
-                bgcolor: "#1B9C85", // theme.palette.primary.main
-                color: "white",
-              },
-            }}
-          >
-            New menu category
-          </Button>
+        <Box>
+          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <Button
+              onClick={() => setOpen(true)}
+              variant="contained"
+              startIcon={<AddIcon />}
+              sx={{
+                backgroundColor: "#4C4C6D",
+                width: "fit-content",
+                color: "#E8F6EF",
+                mb: 2,
+                ":hover": {
+                  bgcolor: "#1B9C85", // theme.palette.primary.main
+                  color: "white",
+                },
+              }}
+            >
+              New menu category
+            </Button>
+          </Box>
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            {filteredMenuCategories.map((menuCategory) => (
+              <ItemCard
+                key={menuCategory.id}
+                icon={
+                  <CategoryIcon
+                    sx={{ fontSize: "60px", mb: 1.5, color: "#1B9C85" }}
+                  />
+                }
+                href={`/backoffice/menuCategories/${menuCategory.id}`}
+                title={menuCategory.name}
+                subtitle={`${getMenusCount(menuCategory.id)} menus`}
+              />
+            ))}
+          </Box>
         </Box>
-        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-          {filteredMenuCategories.map((menuCategory) => (
-            <ItemCard
-              key={menuCategory.id}
-              icon={
-                <CategoryIcon
-                  sx={{ fontSize: "60px", mb: 1.5, color: "#1B9C85" }}
-                />
-              }
-              href={`/backoffice/menuCategories/${menuCategory.id}`}
-              title={menuCategory.name}
-              subtitle={`${getMenusCount(menuCategory.id)} menus`}
-            />
-          ))}
-        </Box>
+        <NewMenuCategory open={open} setOpen={setOpen} />
       </Box>
-      <NewMenuCategory open={open} setOpen={setOpen} />
-    </Box>
+    </Layout>
   );
 };
 

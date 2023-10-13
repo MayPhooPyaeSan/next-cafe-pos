@@ -1,116 +1,182 @@
-import {
-  Avatar,
-  Box,
-  Divider,
-  Fade,
-  Paper,
-  Slide,
-  Typography,
-} from "@mui/material";
-import Image from "next/image";
-import pic1 from "../assets/pic1.jpeg";
-import pic2 from "../assets/pic2.jpeg";
-import pic3 from "../assets/pic3.jpeg";
-import { useRef, useState } from "react";
+import { AiFillStar } from "react-icons/ai";
 
-const testimonials = [
-  {
-    name: "Haruto",
-    company: "Tasty Foods Co. Ltd",
-    avatar: pic1,
-    description: `We increased our sale by 120% during the first 3 months of using Foodie POS. Easy and simple to use. 
-        Super duper recommended for everyone who are less tech savy. 5/5`,
-  },
-  {
-    name: "ASA",
-    company: "Awa Sar Co. Ltd",
-    avatar: pic2,
-    description: `Our customers love Foodie POS. Quick and easy with QR code ordering. We now spend more time taking 
-        care of our customers instead of taking orders manually. Thanks to Foodie POS!`,
-  },
-  {
-    name: "Do Hyun",
-    company: "Swey Mel Co. Ltd",
-    avatar: pic3,
-    description: `Integrated system. Easy to use. Very satisfied. Highly recommended for everyone. 
-      Foodie POS customer service is a top-notch! They are always there when we need help. 5 starsss!`,
-  },
-];
-
-const Testimonials = () => {
+const Testimonial = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-evenly",
-        my: 5,
-        minHeight: 350,
-        flexWrap: "wrap",
-      }}
-    >
-      {testimonials.map((item) => {
-        return (
-          <Slide direction="up" in key={item.description}>
-            <Paper
-              sx={{
-                width: 300,
-                height: 180,
-                p: 2,
-                mb: 3,
-                borderRadius: 3,
-                position: "relative",
-                bgcolor: "#1B9C85",
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  mb: 2,
-                }}
-              >
-                <Avatar alt={item.name} sx={{ mr: 2 }}>
-                  <Image
-                    src={item.avatar}
-                    alt={item.name}
-                    fill
-                    loading="eager"
-                    sizes="(max-width: 768px) 100px, 200px"
-                  />
-                </Avatar>
-                <Box>
-                  <Typography
-                    sx={{
-                      fontSize: "14px",
-                      fontStyle: "italic",
-                      color: "#E8F6EF",
-                    }}
-                  >
-                    {item.name}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "14px",
-                      fontStyle: "italic",
-                      color: "#E8F6EF",
-                    }}
-                  >
-                    {item.company}
-                  </Typography>
-                </Box>
-              </Box>
-              <Typography
-                variant="body1"
-                sx={{ fontSize: "16px", color: "#E8F6EF" }}
-              >
-                {item.description}
-              </Typography>
-            </Paper>
-          </Slide>
-        );
-      })}
-    </Box>
+    <>
+      <h1 className="h1">What People are Saying</h1>
+      <div className="testimonial-container ">
+        <div style={{ width: "100%", height: "100%" }}>
+          <div>
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+          </div>
+          <h3
+            style={{
+              marginBottom: "2rem",
+              fontSize: "24px",
+              fontFamily: "Playfair Display",
+            }}
+          >
+            &quot;Must-Visit Cafe Experience&quot;
+          </h3>
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              color: "#1f1f1f",
+              opacity: "0.8",
+            }}
+          >
+            I recently had the pleasure of dining at Cappuccino-Anytime, and it
+            was an exceptional experience from start to finish. The moment I
+            stepped through the doors, I was greeted with an inviting ambiance
+            that set the perfect tone for my visit.
+          </p>
+          <p
+            style={{
+              color: "black",
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              fontFamily: "Montserrat, Helvetica, Arial, Lucida, sans-serif",
+            }}
+          >
+            Summer.
+          </p>
+        </div>
+        <div style={{ width: "100%", height: "100%" }}>
+          <div>
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+          </div>
+          <h3
+            style={{
+              marginBottom: "2rem",
+              fontSize: "24px",
+              fontFamily: "Playfair Display",
+            }}
+          >
+            &quot;Gourmet Coffee&quot;
+          </h3>
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              color: "#1f1f1f",
+              opacity: "0.8",
+            }}
+          >
+            My recent visit to Cappuccino-Anytime was an indulgence in
+            exceptional flavors, especially their standout feature - Gourmet
+            Coffee. From the moment I entered, the inviting aroma of freshly
+            brewed coffee set the perfect tone for my experience.
+          </p>
+          <p
+            style={{
+              color: "black",
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              fontFamily: "Montserrat, Helvetica, Arial, Lucida, sans-serif",
+            }}
+          >
+            Dory JM.
+          </p>
+        </div>
+        <div style={{ width: "100%", height: "100%" }}>
+          <div>
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+          </div>
+          <h3
+            style={{
+              marginBottom: "2rem",
+              fontSize: "24px",
+              fontFamily: "Playfair Display",
+            }}
+          >
+            &quot;Quality Ingredients&quot;
+          </h3>
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              color: "#1f1f1f",
+              opacity: "0.8",
+            }}
+          >
+            My recent visit to Cappuccino-Anytime was nothing short of a
+            culinary delight, especially when it came to their commitment to
+            using `Quality Ingredients`. From the very first bite, it was
+            evident that each element of my dish was meticulously chosen for its
+            exceptional quality.
+          </p>
+          <p
+            style={{
+              color: "black",
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              fontFamily: "Montserrat, Helvetica, Arial, Lucida, sans-serif",
+            }}
+          >
+            Kenny.
+          </p>
+        </div>
+        <div style={{ width: "100%", height: "100%" }}>
+          <div>
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+            <AiFillStar fontSize={30} color="#3f2305" />
+          </div>
+          <h3
+            style={{
+              marginBottom: "2rem",
+              fontSize: "24px",
+              fontFamily: "Playfair Display",
+            }}
+          >
+            &quot;Cozy Atmosphere&quot;
+          </h3>
+          <p
+            style={{
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              color: "#1f1f1f",
+              opacity: "0.8",
+            }}
+          >
+            My recent experience at Cappuccino-Anytime was nothing short of
+            delightful, thanks to the `Cozy Atmosphere` that enveloped the
+            entire space. The moment I walked in, I was greeted by an ambiance
+            that felt like a warm embrace.This ambiance is ideal for those
+            seeking a tranquil space to work in meaningful conversations.
+          </p>
+          <p
+            style={{
+              color: "black",
+              fontSize: "17px",
+              lineHeight: "31px",
+              fontWeight: "500",
+              fontFamily: "Montserrat, Helvetica, Arial, Lucida, sans-serif",
+            }}
+          >
+            Liam M.
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
-
-export default Testimonials;
+export default Testimonial;

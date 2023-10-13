@@ -48,8 +48,10 @@ export const fetchAppData = createAsyncThunk(
     thunkAPI.dispatch(setOrderlines(orderlines));
     thunkAPI.dispatch(setTables(tables));
     thunkAPI.dispatch(setCompany(company));
-    thunkAPI.dispatch(setAppLoading(false));
+
     localStorage.setItem("selectedLocationId", locations[0].id);
+
+    thunkAPI.dispatch(setAppLoading(false));
     thunkAPI.dispatch(setInit(true));
   }
 );
@@ -67,7 +69,7 @@ export const appSlice = createSlice({
     setInit: (state, action: PayloadAction<boolean>) => {
       state.init = action.payload;
     },
-    setAppLoading: (state, action) => {
+    setAppLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
   },

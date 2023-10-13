@@ -1,3 +1,4 @@
+import Layout from "@/components/Layout";
 import Loading from "@/components/Loading";
 import { config } from "@/config";
 import { useAppSelector } from "@/store/hook";
@@ -60,64 +61,66 @@ const Settings = () => {
     });
   };
 
-  if (isLoading) return <Loading />;
+  // if (isLoading) return <Loading />;
   if (!company) return null;
 
   return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          margin: "0 auto",
-        }}
-      >
-        <TextField
-          label="Name"
-          variant="outlined"
-          value={newCompany.name}
-          sx={{ mb: 2 }}
-          onChange={(evt) => {
-            const name = evt.target.value;
-            setNewCompany({ ...newCompany, name });
+    <Layout>
+      <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            margin: "20px auto",
           }}
-        />
-        <TextField
-          label="Address"
-          variant="outlined"
-          value={newCompany.address}
-          sx={{ mb: 2 }}
-          onChange={(evt) =>
-            setNewCompany({ ...newCompany, address: evt.target.value })
-          }
-        />
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Locations</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={selectedLocation ? selectedLocation.id : ""}
-            label="Locations"
-            onChange={handleOnchange}
-          >
-            {locations.map((location) => {
-              return (
-                <MenuItem key={location.id} value={location.id}>
-                  {location.name}
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
-        <Button
-          variant="contained"
-          sx={{ mt: 2, width: "fit-content" }}
-          onClick={updateCompany}
         >
-          Update
-        </Button>
+          <TextField
+            label="Name"
+            variant="outlined"
+            value={newCompany.name}
+            sx={{ mb: 2 }}
+            onChange={(evt) => {
+              const name = evt.target.value;
+              setNewCompany({ ...newCompany, name });
+            }}
+          />
+          <TextField
+            label="Address"
+            variant="outlined"
+            value={newCompany.address}
+            sx={{ mb: 2 }}
+            onChange={(evt) =>
+              setNewCompany({ ...newCompany, address: evt.target.value })
+            }
+          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Locations</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedLocation ? selectedLocation.id : ""}
+              label="Locations"
+              onChange={handleOnchange}
+            >
+              {locations.map((location) => {
+                return (
+                  <MenuItem key={location.id} value={location.id}>
+                    {location.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+          <Button
+            variant="contained"
+            sx={{ mt: 2, width: "fit-content" }}
+            onClick={updateCompany}
+          >
+            Update
+          </Button>
+        </Box>
       </Box>
-    </Box>
+    </Layout>
   );
 };
 

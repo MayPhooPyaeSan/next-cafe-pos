@@ -1,4 +1,3 @@
-import Loading from "@/components/Loading";
 import Layout from "@/components/Layout";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { appData } from "@/store/slices/appSlice";
@@ -76,91 +75,6 @@ const Row = ({ order, orderlines, menus }: Props) => {
         itemId,
       };
     });
-
-    return orderlineMenus.map((item) => (
-      <Box key={item.itemId} sx={{ mr: 2 }}>
-        <Paper
-          elevation={3}
-          sx={{
-            width: 250,
-            height: 300,
-            p: 2,
-          }}
-        >
-          <Box
-            sx={{
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box>
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <Typography variant="h6">{item.menu.name}</Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    backgroundColor: "#1B9C85",
-                    borderRadius: "50%",
-                    width: 30,
-                    height: 30,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    color: "white",
-                  }}
-                >
-                  {item.quantity}
-                </Typography>
-              </Box>
-              <Divider sx={{ my: 1 }} />
-              <Box
-                sx={{
-                  maxHeight: "180px",
-                  overflow: "scroll",
-                }}
-              ></Box>
-            </Box>
-            <Box>
-              <Divider sx={{ mb: 2 }} />
-              <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <FormControl sx={{ width: "100%" }}>
-                  <InputLabel>Status</InputLabel>
-                  <Select
-                    value={item.status}
-                    label="Status"
-                    onChange={(evt) =>
-                      handleUpdateOrderStatus(item.itemId, evt)
-                    }
-                  >
-                    <MenuItem value={OrderStatus.PENDING}>
-                      {OrderStatus.PENDING}
-                    </MenuItem>
-                    <MenuItem value={OrderStatus.PREPARING}>
-                      {OrderStatus.PREPARING}
-                    </MenuItem>
-                    <MenuItem value={OrderStatus.COMPLETE}>
-                      {OrderStatus.COMPLETE}
-                    </MenuItem>
-                    <MenuItem value={OrderStatus.REJECTED}>
-                      {OrderStatus.REJECTED}
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-            </Box>
-          </Box>
-        </Paper>
-      </Box>
-    ));
   };
 
   const handleUpdateOrderStatus = async (
@@ -191,19 +105,13 @@ const Row = ({ order, orderlines, menus }: Props) => {
         <TableCell align="right">{order.isPaid ? "Yes" : "No"}</TableCell>
         <TableCell align="right">{order.price}</TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit sx={{ my: 2 }}>
-            <Box sx={{ display: "flex" }}>{renderMenusAddonsFromOrder()}</Box>
-          </Collapse>
-        </TableCell>
-      </TableRow>
+      <TableRow></TableRow>
     </>
   );
 };
 
 const Orders = () => {
-  const { isLoading, orders, orderlines, menus } = useAppSelector(appData);
+  const { orders, orderlines, menus } = useAppSelector(appData);
   const selectedLocationId = getSelectedLocationId() as string;
   const currentLocationOrders = orders.filter(
     (item) => item.locationId === Number(selectedLocationId)
@@ -212,8 +120,6 @@ const Orders = () => {
   const getOrderlinesByOrderId = (orderId: number) => {
     return orderlines.filter((item) => item.orderId === orderId);
   };
-
-  if (isLoading) return <Loading />;
 
   return (
     <Layout>

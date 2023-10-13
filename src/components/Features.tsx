@@ -1,67 +1,161 @@
-import { Box, Slide, Typography, Zoom } from "@mui/material";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import QrCode2Icon from "@mui/icons-material/QrCode2";
-import LocationOn from "@mui/icons-material/LocationOn";
-import ChecklistIcon from "@mui/icons-material/Checklist";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-
-const features = [
-  {
-    icon: <MenuBookIcon sx={{ fontSize: "90px", color: "#1B9C85" }} />,
-    text: "Easily manage your menus with Foodie POS",
-    delay: "1000ms",
-  },
-  {
-    icon: <QrCode2Icon sx={{ fontSize: "90px", color: "#1B9C85" }} />,
-    text: "Scan and order. Quick and easy! Your customers will love it!",
-    delay: "1300ms",
-  },
-  {
-    icon: <LocationOn sx={{ fontSize: "90px", color: "#1B9C85" }} />,
-    text: "Foodie POS supports multiple locations for your business.",
-    delay: "1500ms",
-  },
-  {
-    icon: <ChecklistIcon sx={{ fontSize: "90px", color: "#1B9C85" }} />,
-    text: "Backoffice and order apps are included in every subscription.",
-    delay: "1700ms",
-  },
-  {
-    icon: <SupportAgentIcon sx={{ fontSize: "90px", color: "#1B9C85" }} />,
-    text: "Dedicated customer support so that we are awlays here to help you.",
-    delay: "2000ms",
-  },
-];
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Menus as Menu } from "@prisma/client";
 
 const Features = () => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        mt: 15,
-        flexWrap: "wrap",
-        justifyContent: "center",
-      }}
-    >
-      {features.map((item) => {
-        return (
-          <Zoom
-            key={item.text}
-            in={true}
-            style={{
-              transitionDelay: true ? item.delay : "0ms",
-              transitionDuration: "1000ms",
-            }}
-          >
-            <Box sx={{ textAlign: "center", maxWidth: 330, mb: 10, px: 5 }}>
-              {item.icon}
-
-              <Typography variant="h6">{item.text}</Typography>
+    <>
+      <h1 className="h1">Recommended Menus</h1>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "20px",
+          marginTop: "5%",
+        }}
+      >
+        <Card sx={{ width: 260, height: 280, pb: 2 }} className="menu-card">
+          <CardMedia
+            sx={{ height: "80%", backgroundSize: "cover", width: "100%" }}
+            image={
+              "https://i.pinimg.com/564x/46/a2/6e/46a26e226fb6faec07cd018bc13b759c.jpg"
+            }
+            component={"div"}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              sx={{ textAlign: "center", mb: 0 }}
+            >
+              Ice Coffee
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <PaidIcon color="success" /> */}
             </Box>
-          </Zoom>
-        );
-      })}
-    </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: 260, height: 280, pb: 2 }} className="menu-card">
+          <CardMedia
+            sx={{ height: "80%", backgroundSize: "cover", width: "100%" }}
+            image={
+              "https://i.pinimg.com/564x/41/45/eb/4145eb4fe61ff37397a6cbf64f39ab46.jpg"
+            }
+            component={"div"}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              sx={{ textAlign: "center", mb: 0 }}
+            >
+              Salt Bread
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <PaidIcon color="success" /> */}
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: 260, height: 280, pb: 2 }} className="menu-card">
+          <CardMedia
+            sx={{ height: "80%", backgroundSize: "cover", width: "100%" }}
+            image={
+              "https://i.pinimg.com/564x/8e/1a/82/8e1a8250496edeb71da4aa7e78e6518f.jpg"
+            }
+            component={"div"}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              sx={{ textAlign: "center", mb: 0 }}
+            >
+              Oreo Ice-cream
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <PaidIcon color="success" /> */}
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: 260, height: 280, pb: 2 }} className="menu-card">
+          <CardMedia
+            sx={{ height: "80%", backgroundSize: "cover", width: "100%" }}
+            image={
+              "https://i.pinimg.com/564x/d2/a4/3f/d2a43f023606ea497d572ecf3ace07cb.jpg"
+            }
+            component={"div"}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              sx={{ textAlign: "center", mb: 0 }}
+            >
+              Strawberry Soda
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <PaidIcon color="success" /> */}
+            </Box>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: 260, height: 280, pb: 2 }} className="menu-card">
+          <CardMedia
+            sx={{
+              backgroundSize: "cover",
+              width: "100%",
+              height: "80%",
+            }}
+            image={
+              "https://i.pinimg.com/564x/8a/41/b5/8a41b56da6d63b1de8fc4d18640d41be.jpg"
+            }
+            component={"div"}
+          />
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              sx={{ textAlign: "center", mb: 0 }}
+            >
+              Red Velvet Cake
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {/* <PaidIcon color="success" /> */}
+            </Box>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 

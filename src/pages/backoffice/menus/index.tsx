@@ -5,7 +5,7 @@ import { appData } from "@/store/slices/appSlice";
 import { getSelectedLocationId } from "@/utils/client";
 import AddIcon from "@mui/icons-material/Add";
 import { Box, Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewMenu from "./NewMenu";
 import Layout from "@/components/Layout";
 
@@ -14,16 +14,18 @@ const Menus = () => {
   const { isLoading, menusMenuCategoriesLocations, menus } =
     useAppSelector(appData);
   const selectedLocationId = getSelectedLocationId() as string;
+  console.log(selectedLocationId);
 
   const validMenusIds = menusMenuCategoriesLocations
     .filter(
-      (item) =>
-        item.menuId && item.locationId === parseInt(selectedLocationId, 10)
+      (item) => item.menuId && item.locationId === Number(selectedLocationId)
     )
     .map((item) => item.menuId);
+
   const filteredMenus = menus.filter(
     (menu) => menu.id && validMenusIds.includes(menu.id)
   );
+  console.log(isLoading);
 
   // if (isLoading) return <Loading />;
 

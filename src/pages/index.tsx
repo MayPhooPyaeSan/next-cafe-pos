@@ -14,6 +14,12 @@ import logo from "../assets/logo2.png";
 import Image from "next/image";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
+import Features from "@/components/Features";
+import LandingService from "@/components/LandingService";
+import shop from "../assets/shop.jpg";
+import Testimonial from "@/components/Testimonial";
+import Footer from "@/components/Footer";
+import ContactUs from "@/components/ContactUs";
 
 const pages = ["Home", "Story", "Menu", "Service", "Blog", "Contact"];
 
@@ -127,7 +133,7 @@ function ResponsiveAppBar() {
                           "color 0.3s ease, text-decoration 0.3s ease",
                       }}
                       onMouseOver={(e) => {
-                        e.currentTarget.style.color = "white";
+                        e.currentTarget.style.color = "#733528";
                       }}
                       onMouseOut={(e) => {
                         e.currentTarget.style.color = "#733528";
@@ -188,18 +194,21 @@ function ResponsiveAppBar() {
       </Menu>
       <div className="story-part" id="page1">
         <div className="story-card-img" style={{ cursor: "pointer" }}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card
+            sx={{ maxWidth: 345, boxShadow: "none", background: "#FAFAFA" }}
+          >
             <CardMedia
+              className="story-img"
               component="img"
               alt="story-img"
               width="100%"
               height="370"
-              image="https://i.pinimg.com/564x/2e/ce/d7/2eced7de93a2db50b9122e0fb8b96c3b.jpg"
+              image={shop.src}
             />
           </Card>
         </div>
         <div className="story-p">
-          <h1 style={{ cursor: "pointer" }}>Our story</h1>
+          <h1 className="our-story-title">Our Story</h1>
           <p
             style={{
               cursor: "pointer",
@@ -207,7 +216,9 @@ function ResponsiveAppBar() {
               fontSize: isMobile ? "1rem" : "1.3rem",
             }}
           >
-            <span style={{ color: "#3f2305", fontWeight: "600" }}>
+            <span
+              style={{ color: "#3f2305", fontWeight: "600", fontSize: "25px" }}
+            >
               Cappuccino Anytime{" "}
             </span>{" "}
             is not just a cafe; it is a community. We host events, <br />{" "}
@@ -215,12 +226,24 @@ function ResponsiveAppBar() {
             <br /> delve deeper into the world of coffee. Join us for a journey
             of flavors, <br />
             aromas, and good company. Come, be a part of our story
-            <br /> at{" "}
-            <span style={{ color: "#3f2305", fontWeight: "600" }}>
-              Cappuccino Anytime{" "}
-            </span>{" "}
+            <br /> at Cappuccino Anytime{" "}
           </p>
         </div>
+      </div>
+      <div>
+        <Features />
+      </div>
+      <div>
+        <LandingService />
+      </div>
+      <div>
+        <Testimonial />
+      </div>
+      <div>
+        <Footer />
+      </div>
+      <div>
+        <ContactUs />
       </div>
     </div>
   );
