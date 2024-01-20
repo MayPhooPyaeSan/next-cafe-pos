@@ -8,7 +8,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import NewMenuCategory from "./NewMenuCategory";
-import Layout from "@/components/Layout";
+
 
 const MenuCategories = () => {
   const { isLoading, menuCategories, menusMenuCategoriesLocations } =
@@ -37,7 +37,6 @@ const MenuCategories = () => {
   // if (isLoading) return <Loading />;
 
   return (
-    <Layout>
       <Box>
         <Box>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -77,7 +76,7 @@ const MenuCategories = () => {
         </Box>
         <NewMenuCategory open={open} setOpen={setOpen} />
       </Box>
-    </Layout>
+   
   );
 };
 

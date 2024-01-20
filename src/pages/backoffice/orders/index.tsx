@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import { useAppDispatch, useAppSelector } from "@/store/hook";
 import { appData } from "@/store/slices/appSlice";
 import { updateOrderlineStatus } from "@/store/slices/orderlinesSlice";
@@ -122,34 +121,32 @@ const Orders = () => {
   };
 
   return (
-    <Layout>
-      <Box>
-        <TableContainer component={Paper} sx={{ maxHeight: "100%" }}>
-          <Table aria-label="collapsible table" stickyHeader>
-            <TableHead>
-              <TableRow>
-                <TableCell />
-                <TableCell align="right">Order Id</TableCell>
-                <TableCell align="right">No. of menus</TableCell>
-                <TableCell align="right">Table Id</TableCell>
-                <TableCell align="right">Paid</TableCell>
-                <TableCell align="right">Total price</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {currentLocationOrders.map((order) => (
-                <Row
-                  key={order.id}
-                  menus={menus}
-                  order={order}
-                  orderlines={getOrderlinesByOrderId(order.id)}
-                />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Box>
-    </Layout>
+    <Box>
+      <TableContainer component={Paper} sx={{ maxHeight: "100%" }}>
+        <Table aria-label="collapsible table" stickyHeader>
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell align="right">Order Id</TableCell>
+              <TableCell align="right">No. of menus</TableCell>
+              <TableCell align="right">Table Id</TableCell>
+              <TableCell align="right">Paid</TableCell>
+              <TableCell align="right">Total price</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {currentLocationOrders.map((order) => (
+              <Row
+                key={order.id}
+                menus={menus}
+                order={order}
+                orderlines={getOrderlinesByOrderId(order.id)}
+              />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Box>
   );
 };
 

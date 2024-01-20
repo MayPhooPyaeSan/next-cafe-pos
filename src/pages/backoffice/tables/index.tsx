@@ -8,7 +8,6 @@ import TableBarIcon from "@mui/icons-material/TableBar";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
 import NewTable from "./NewTable";
-import Layout from "@/components/Layout";
 
 const Tables = () => {
   const { isLoading, tables } = useAppSelector(appData);
@@ -22,46 +21,44 @@ const Tables = () => {
   // if (isLoading) return <Loading />;
 
   return (
-    <Layout>
+    <Box>
       <Box>
-        <Box>
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <Button
-              onClick={() => setOpen(true)}
-              variant="contained"
-              startIcon={<AddIcon />}
-              sx={{
-                backgroundColor: "#4C4C6D",
-                width: "fit-content",
-                color: "#E8F6EF",
-                mb: 2,
-                ":hover": {
-                  bgcolor: "#1B9C85",
-                  color: "white",
-                },
-              }}
-            >
-              New table
-            </Button>
-          </Box>
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            {validTables.map((table) => (
-              <ItemCard
-                key={table.id}
-                href={`/backoffice/tables/${table.id}`}
-                icon={
-                  <TableBarIcon
-                    sx={{ fontSize: "60px", mb: 1.5, color: "#1B9C85" }}
-                  />
-                }
-                title={table.name}
-              />
-            ))}
-          </Box>
+        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button
+            onClick={() => setOpen(true)}
+            variant="contained"
+            startIcon={<AddIcon />}
+            sx={{
+              backgroundColor: "#4C4C6D",
+              width: "fit-content",
+              color: "#E8F6EF",
+              mb: 2,
+              ":hover": {
+                bgcolor: "#1B9C85",
+                color: "white",
+              },
+            }}
+          >
+            New table
+          </Button>
         </Box>
-        <NewTable open={open} setOpen={setOpen} />
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          {validTables.map((table) => (
+            <ItemCard
+              key={table.id}
+              href={`/backoffice/tables/${table.id}`}
+              icon={
+                <TableBarIcon
+                  sx={{ fontSize: "60px", mb: 1.5, color: "#1B9C85" }}
+                />
+              }
+              title={table.name}
+            />
+          ))}
+        </Box>
       </Box>
-    </Layout>
+      <NewTable open={open} setOpen={setOpen} />
+    </Box>
   );
 };
 

@@ -7,7 +7,6 @@ import AddIcon from "@mui/icons-material/Add";
 import { Box, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import NewMenu from "./NewMenu";
-import Layout from "@/components/Layout";
 
 const Menus = () => {
   const [open, setOpen] = useState(false);
@@ -30,53 +29,51 @@ const Menus = () => {
   // if (isLoading) return <Loading />;
 
   return (
-    <Layout>
-      <Box>
+    <Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          m: "0 auto",
+        }}
+      >
         <Box
           sx={{
+            width: "100%",
             display: "flex",
-            flexDirection: "column",
-            m: "0 auto",
+            justifyContent: "flex-end",
           }}
         >
-          <Box
+          <Button
+            onClick={() => setOpen(true)}
+            variant="contained"
+            startIcon={<AddIcon />}
             sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "flex-end",
+              backgroundColor: "#4C4C6D",
+              width: "fit-content",
+              color: "#E8F6EF",
+              mb: 2,
+              ":hover": {
+                bgcolor: "#1B9C85",
+                color: "white",
+              },
             }}
           >
-            <Button
-              onClick={() => setOpen(true)}
-              variant="contained"
-              startIcon={<AddIcon />}
-              sx={{
-                backgroundColor: "#4C4C6D",
-                width: "fit-content",
-                color: "#E8F6EF",
-                mb: 2,
-                ":hover": {
-                  bgcolor: "#1B9C85",
-                  color: "white",
-                },
-              }}
-            >
-              New menu
-            </Button>
-          </Box>
-          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-            {filteredMenus.map((item) => (
-              <MenuCard
-                key={item.id}
-                menu={item}
-                href={`/backoffice/menus/${item.id}`}
-              />
-            ))}
-          </Box>
+            New menu
+          </Button>
         </Box>
-        <NewMenu open={open} setOpen={setOpen} />
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          {filteredMenus.map((item) => (
+            <MenuCard
+              key={item.id}
+              menu={item}
+              href={`/backoffice/menus/${item.id}`}
+            />
+          ))}
+        </Box>
       </Box>
-    </Layout>
+      <NewMenu open={open} setOpen={setOpen} />
+    </Box>
   );
 };
 
