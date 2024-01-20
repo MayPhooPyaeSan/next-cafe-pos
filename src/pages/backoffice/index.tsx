@@ -17,20 +17,20 @@ const BackofficeApp = () => {
   }, [data, router]);
 
   return (
-    <Layout>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-          maxWidth: 200,
-          margin: "0 auto",
-          mt: 3,
-        }}
-      >
-        welcome to back office
-      </Box>
-    </Layout>
+    // <Layout>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        maxWidth: 200,
+        margin: "0 auto",
+        mt: 3,
+      }}
+    >
+      welcome to back office
+    </Box>
+    // </Layout>
   );
 };
 
