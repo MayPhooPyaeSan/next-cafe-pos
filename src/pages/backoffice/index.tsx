@@ -1,7 +1,7 @@
 import { useAppDispatch } from "@/store/hook";
 import { fetchAppData } from "@/store/slices/appSlice";
-import { Box } from "@mui/material";
-import { useSession } from "next-auth/react";
+import { Box, Button } from "@mui/material";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -28,6 +28,21 @@ const BackofficeApp = () => {
       }}
     >
       welcome to back office
+      <Button
+        color="inherit"
+        sx={{
+          background: "#040303",
+          marginRight: "10px",
+          borderRadius: "10px",
+          p: "10px",
+          "&:hover": {
+            backgroundColor: "#161616",
+          },
+        }}
+        onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+      >
+        Sign out
+      </Button>
     </Box>
     // </Layout>
   );
