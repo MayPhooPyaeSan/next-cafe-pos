@@ -7,6 +7,7 @@ import "@/styles/globals.css";
 import Router from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import Layout from "@/components/Layout";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -21,7 +22,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <SessionProvider>
         <Provider store={store}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Provider>
       </SessionProvider>
     </>
