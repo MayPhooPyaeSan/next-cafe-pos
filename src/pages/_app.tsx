@@ -12,11 +12,12 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
         <title>Cappuccino Anytime</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider>
         <Provider store={store}>
@@ -25,4 +26,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </SessionProvider>
     </>
   );
-}
+};
+
+export default App;
