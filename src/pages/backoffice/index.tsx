@@ -1,4 +1,3 @@
-import Layout from "../../components/Layout";
 import { useAppDispatch } from "@/store/hook";
 import { fetchAppData } from "@/store/slices/appSlice";
 import { Box } from "@mui/material";
