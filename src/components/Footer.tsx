@@ -11,7 +11,7 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "center",
         padding: "20px",
-        backgroundImage: `url("https://i.pinimg.com/564x/27/f2/5e/27f25e1d748f6a4b59a58128c3eafc4e.jpg")`,
+        backgroundImage: `url("/contactPhoto6.jpg")`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",

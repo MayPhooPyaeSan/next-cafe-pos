@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const homePhoto = "/home.jpg";
+
   return (
     <div>
       <div
@@ -55,7 +55,7 @@ function ResponsiveAppBar() {
           justifyContent: "center",
           position: "relative",
           zIndex: 0,
-          backgroundImage: `url(${homePhoto})`,
+          backgroundImage: `url("/home.jpg")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
           backgroundPosition: "center top",
