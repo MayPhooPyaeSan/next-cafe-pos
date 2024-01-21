@@ -20,7 +20,7 @@ import shop from "../assets/shop.jpg";
 import Testimonial from "@/components/Testimonial";
 import Footer from "@/components/Footer";
 import ContactUs from "@/components/ContactUs";
-const homePhoto = "/home.jpg";
+
 const pages = ["Home", "Story", "Menu", "Service", "Blog", "Contact"];
 
 function ResponsiveAppBar() {
@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  const homePhoto = "/home.jpg";
   return (
     <div>
       <div
