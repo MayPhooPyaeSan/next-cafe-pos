@@ -1,23 +1,26 @@
 import React from "react";
 import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
+const contactPhoto = "/contactPhoto6.jpg";
 
 const Footer = () => {
-  const followUsContainerStyle: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "20px",
-    backgroundImage: `url("/contactPhoto6.jpg")`, // Assuming the image is in the public folder
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-    height: "400px",
-    marginTop: "10%",
-  };
   return (
-    <div style={followUsContainerStyle} className="follow-us-container">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "20px",
+        backgroundImage: `url(${contactPhoto})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center center",
+        height: "400px",
+        marginTop: "10%",
+      }}
+      className="follow-us-container"
+    >
       <h2 className="follow-us-heading">FOLLOW US ON SOCIAL</h2>
       <h4 className="username">@cappuccino_anytime</h4>
       <div className="social-icons">
