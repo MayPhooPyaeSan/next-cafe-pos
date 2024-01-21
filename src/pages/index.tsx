@@ -44,20 +44,23 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
+  const welcomeImgStyle: React.CSSProperties = {
+    height: "2000px",
+    marginTop: isMobile ? "0" : "-100px",
+    display: "flex",
+    alignItems: isMobile ? "center" : "flex-start",
+    justifyContent: "center",
+    position: "relative",
+    zIndex: 0,
+    backgroundImage: `url("/pexels-kevin-menajang-982612.jpg")`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "center top",
+  };
+
   return (
     <div>
-      <div
-        style={{
-          height: "2000px",
-          marginTop: isMobile ? "0" : "-100px",
-          display: "flex",
-          alignItems: isMobile ? "center" : "flex-start",
-          justifyContent: "center",
-          position: "relative",
-          zIndex: 0,
-        }}
-        className="welcome-img"
-      >
+      <div style={welcomeImgStyle} className="welcome-img">
         <AppBar
           position="static"
           sx={{

@@ -34,12 +34,12 @@ body {
   z-index: 100;
 }
 
-.welcome-img {
+/* .welcome-img {
   background-image: url("../assets/pexels-kevin-menajang-982612.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center top;
-}
+} */
 
 .welcome-part {
   margin-top: -97rem;
@@ -142,11 +142,11 @@ body {
 }
 
 /* Footer.module.css */
-.follow-us-container {
+/* .follow-us-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Horizontal centering */
-  justify-content: center; /* Vertical centering */
+  align-items: center; 
+  justify-content: center; 
   padding: 20px;
   background-image: url("../assets/contactPhoto6.jpg");
   background-size: cover;
@@ -154,7 +154,7 @@ body {
   background-position: center center;
   height: 400px;
   margin-top: 10%;
-}
+} */
 
 .follow-us-container h2 {
   font-size: 24px;
