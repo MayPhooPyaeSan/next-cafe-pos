@@ -63,7 +63,7 @@ function ResponsiveAppBar() {
         className="welcome-img"
       >
         <AppBar
-          position="static"
+          position="fixed"
           sx={{
             background: "transparent",
             boxShadow: "none",
