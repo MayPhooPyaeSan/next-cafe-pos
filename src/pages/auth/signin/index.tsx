@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
