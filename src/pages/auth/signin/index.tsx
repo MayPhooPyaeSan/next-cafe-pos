@@ -49,7 +49,7 @@ const SignIn = () => {
             }}
             onClick={() => signIn("google", { callbackUrl: "/backoffice" })}
           >
-            Sign out
+            SignIn with Google
           </Button>
         </Box>
       </Box>
