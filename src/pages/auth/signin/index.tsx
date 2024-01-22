@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -37,8 +37,8 @@ const SignIn = () => {
           }}
         >
           <Button
-            color="inherit"
             sx={{
+              color: "white",
               background: "#040303",
               marginRight: "10px",
               borderRadius: "10px",
@@ -47,9 +47,9 @@ const SignIn = () => {
                 backgroundColor: "#161616",
               },
             }}
-            onClick={() => signOut({ callbackUrl: "/auth/signin" })}
+            onClick={() => signIn("google", { callbackUrl: "/backoffice" })}
           >
-            Sign in with google
+            Sign out
           </Button>
         </Box>
       </Box>
