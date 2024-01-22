@@ -228,7 +228,6 @@ const Layout = ({ children }: Props) => {
           </Toolbar>
         </Container>
       </AppBar>
-
       {children}
     </Box>
   );

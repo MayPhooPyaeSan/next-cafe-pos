@@ -28,21 +28,6 @@ const BackofficeApp = () => {
       }}
     >
       welcome to back office
-      <Button
-        color="inherit"
-        sx={{
-          background: "#040303",
-          marginRight: "10px",
-          borderRadius: "10px",
-          p: "10px",
-          "&:hover": {
-            backgroundColor: "#161616",
-          },
-        }}
-        onClick={() => signOut({ callbackUrl: "/auth/signin" })}
-      >
-        Sign out
-      </Button>
     </Box>
     // </Layout>
   );
