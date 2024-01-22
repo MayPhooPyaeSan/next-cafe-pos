@@ -21,9 +21,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <SessionProvider>
         <Provider store={store}>
-          {/* <Layout> */}
-          <Component {...pageProps} />
-          {/* </Layout> */}
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </Provider>
       </SessionProvider>
     </>
