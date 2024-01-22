@@ -10,7 +10,7 @@ const SignIn = () => {
     <div>
       <Box>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar
+          {/* <AppBar
             position="static"
             sx={{ padding: "10px 30px" }}
             className="navbar"
@@ -26,7 +26,7 @@ const SignIn = () => {
                 Cappuccino Anytime
               </Typography>
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
         </Box>
         <Box
           sx={{
@@ -37,10 +37,19 @@ const SignIn = () => {
           }}
         >
           <Button
-            variant="contained"
-            onClick={() => signIn("google", { callbackUrl: "/backoffice" })}
+            color="inherit"
+            sx={{
+              background: "#040303",
+              marginRight: "10px",
+              borderRadius: "10px",
+              p: "10px",
+              "&:hover": {
+                backgroundColor: "#161616",
+              },
+            }}
+            onClick={() => signOut({ callbackUrl: "/auth/signin" })}
           >
-            Sign in with Google
+            Sign in with google
           </Button>
         </Box>
       </Box>
